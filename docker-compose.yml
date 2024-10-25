@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  backend:
+    build: .
+    container_name: "backend"
+    restart: "always"    
+    volumes:
+      - ./core:/app
+    ports:
+      - "8000:8000"
