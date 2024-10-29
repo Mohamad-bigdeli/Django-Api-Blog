@@ -31,13 +31,6 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.spl
 
 # Application definition
 
-THIRD_PARTY_APPS = []
-
-MY_APPS = [
-    "accounts.apps.AccountsConfig",
-    "blog.apps.BlogConfig"
-]
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    *MY_APPS
-    *THIRD_PARTY_APPS
+    "accounts.apps.AccountsConfig",
+    "blog.apps.BlogConfig"
 ]
 
 MIDDLEWARE = [
@@ -131,3 +124,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# user manager config
+AUTH_USER_MODEL = "accounts.User"
