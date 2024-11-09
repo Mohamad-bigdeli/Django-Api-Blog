@@ -1,5 +1,12 @@
 from django.urls import path
+from . import views
+
+app_name = "blog"
 
 urlpatterns = [
-
+    # path("cbv-view/", views.IndexView.as_view(), name="index"),
+    # path("go-to-my-github/", views.RedirectToMyGithub.as_view(), name="redirect-github"),
+    path("posts/", views.PostListView.as_view(), name="posts"),
+    path("posts/<int:pk>/", views.PostDetailView.as_view(), name="post-detail"),
+    path("posts/create/", views.PostCreateView.as_view(), name="post-create")
 ]
