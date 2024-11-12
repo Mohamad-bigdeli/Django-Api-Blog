@@ -2,3 +2,6 @@ django>3.2,<3.3
 gunicorn
 python-decouple==3.8  
 pillow
+djangorestframework
+markdown
+django-filter
