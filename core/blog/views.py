@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import (TemplateView , RedirectView, ListView, 
-                                  DetailView, FormView, CreateView)
+                                  DetailView, FormView, CreateView, UpdateView, DeleteView)
 from .models import Post
 from django.urls import reverse_lazy
 from .forms import PostCreateForm
+from django.contrib.auth.mixins import (LoginRequiredMixin, PermissionRequiredMixin)
 
 # Create your views here.
 
@@ -21,8 +22,9 @@ from .forms import PostCreateForm
 # class RedirectToMyGithub(RedirectView):
 #     url = "https://github.com/Mohamad-bigdeli"
 
-class PostListView(ListView):
+class PostListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     model = Post
+    permission_required = "blog.view_post"
     # queryset = Post.objects.all()
     context_object_name = "posts"
     paginate_by = 2
@@ -32,7 +34,7 @@ class PostListView(ListView):
     #     posts = Post.objects.filter(status=True)
     #     return posts
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     context_object_name = "post"
 
@@ -45,9 +47,22 @@ class PostDetailView(DetailView):
 #         form.save()
 #         return super().form_valid(form)
     
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostCreateForm
-    # fields = ["author", "title", "content", "status",
+    # fields = ["title", "content", "status",
     #            "category", "published_date"]
+    success_url = reverse_lazy("blog:posts")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PostEditView(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = PostCreateForm
+    success_url = reverse_lazy("blog:posts")
+    
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
     success_url = reverse_lazy("blog:posts")

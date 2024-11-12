@@ -5,13 +5,10 @@
     <p>
         {{post.content}}
     </p>
+    <small>{{post.author.first_name}} {{post.author.last_name}} - {{post.published_date}}</small>
+    <a href="{% url 'blog:post-edit' pk=post.id %}"> <h5>edit</h5> </a> 
+    <a href="{% url 'blog:post-delete' pk=post.id %}"> <h5>delete</h5> </a>
 </div>
-{% endfor %}
-
-{% for contact in page_obj %}
-    {# Each "contact" is a Contact model object. #}
-    {{ contact.full_name|upper }}<br>
-    ...
 {% endfor %}
 
 <div class="pagination">
