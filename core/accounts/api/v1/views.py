@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
-from .serializers import (RegistrationSerializer, ActivisionResendSerializer)
+from .serializers import (RegistrationSerializer, ActivationResendSerializer)
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .serializers import (CustomAuthTokenSerializer, CustomTokenObtainPairSerializer,
@@ -108,17 +108,19 @@ class TestEmailSend(generics.GenericAPIView):
         self.email = "mhmdbigdeli3@gmail.com"
         user_obj = get_object_or_404(User, email=self.email)
         token = self.get_tokens_for_user(user_obj)
-        email_obj = EmailMessage("email/hello.tpl", {"token":token}, 
-                "mohamadbigdeli24@gmail.com", to=[self.email])
-        
+        email_obj = EmailMessage(
+            "email/hello.tpl",
+            {"token": token},
+            "mohamadbigdeli24@gmail.com",
+            to=[self.email],
+        )
         EmailThread(email_obj).start()
-        return Response({"detail":"email sent"}, status=status.HTTP_200_OK)
-    
-    def get_tokens_for_user(self, user):    
+        return Response("email sent")
+
+    def get_tokens_for_user(self, user):
         refresh = RefreshToken.for_user(user)
-
         return str(refresh.access_token)
-
+    
 class ActivisionApiView(APIView):
     
     def get(self, request, token, *args, **kwargs):
@@ -140,20 +142,26 @@ class ActivisionApiView(APIView):
 
         # if token valid responser ok 
 
-class ActivisionResendApiView(generics.GenericAPIView):
-
-    serializer_class = ActivisionResendSerializer
+class ActivationResendApiView(generics.GenericAPIView):
+    serializer_class = ActivationResendSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
+        serializer = ActivationResendSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user_obj = serializer.validated_data["user"]
         token = self.get_tokens_for_user(user_obj)
-        email_obj = EmailMessage("email/activision_email.tpl", {"token":token}, 
-                    "mohamadbigdeli24@gmail.com", to=[user_obj.email])
+        email_obj = EmailMessage(
+            "email/activision_email.tpl",
+            {"token": token},
+            "admin@admin.com",
+            to=[user_obj.email],
+        )
         EmailThread(email_obj).start()
-        return Response({"details":"user activision resend successfully"}, status=status.HTTP_200_OK)
+        return Response(
+            {"details": "user activation resend successfully"},
+            status=status.HTTP_200_OK,
+        )
 
-    def get_tokens_for_user(self, user):    
+    def get_tokens_for_user(self, user):
         refresh = RefreshToken.for_user(user)
         return str(refresh.access_token)

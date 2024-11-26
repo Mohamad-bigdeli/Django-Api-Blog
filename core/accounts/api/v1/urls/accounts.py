@@ -15,7 +15,7 @@ urlpatterns = [
     # activision
     path("activision/confirm/<str:token>/", views.ActivisionApiView.as_view(), name="activision"),
     # resend activision
-    path("activision/resend/", views.ActivisionResendApiView, name="activision-resend"),
+    path("activation/resend/", views.ActivationResendApiView.as_view(), name="activation-resend"),
     # change password
     path("change-password/", views.ChangePasswordApiView.as_view(), name="change-password"),
     # reset password

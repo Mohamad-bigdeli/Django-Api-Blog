@@ -1,4 +1,4 @@
-{% extends "mail_templated/base.tpl %}
+{% extends "mail_templated/base.tpl" %}
 
 {% block subject %}
 Account Activision 
