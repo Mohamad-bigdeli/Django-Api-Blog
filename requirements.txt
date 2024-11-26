@@ -4,20 +4,19 @@ python-decouple
 Pillow
 djangorestframework
 
-
 # third party modules
 markdown       
 django-filter  
 drf-yasg[validation]
-# djangorestframework-simplejwt
-# djoser
+djangorestframework-simplejwt
+djoser
 # django-cors-headers
 
 # deployment module
 gunicorn
 
 # email third party modules
-# django-mail-templated
+django-mail-templated
 
 # refactoring and tests
 # black

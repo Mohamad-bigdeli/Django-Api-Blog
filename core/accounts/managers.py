@@ -25,6 +25,7 @@ class UserManager(BaseUserManager):
         extera_fields.setdefault("is_staff", True)
         extera_fields.setdefault("is_superuser", True)
         extera_fields.setdefault("is_active", True)
+        extera_fields.setdefault("is_verified", True)
 
         if extera_fields.get("is_staff") is not True:
             raise ValueError(_("Superuser must have is is_staff=True"))

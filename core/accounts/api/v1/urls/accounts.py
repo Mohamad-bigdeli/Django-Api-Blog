@@ -1,5 +1,5 @@
-from django.urls import path, include
-from . import views
+from django.urls import path
+from .. import views
 # from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework_simplejwt.views import (
     # TokenObtainPairView,
@@ -7,11 +7,15 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
-app_name = "api-v1"
-
 urlpatterns = [
     # registration
     path("registration/", views.RegistrationApiView.as_view(), name="registration"),
+    # test email send
+    path("test-email/", views.TestEmailSend.as_view(), name="test-email"),
+    # activision
+    path("activision/confirm/<str:token>/", views.ActivisionApiView.as_view(), name="activision"),
+    # resend activision
+    path("activision/resend/", views.ActivisionResendApiView, name="activision-resend"),
     # change password
     path("change-password/", views.ChangePasswordApiView.as_view(), name="change-password"),
     # reset password
