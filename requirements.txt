@@ -19,10 +19,10 @@ gunicorn
 django-mail-templated
 
 # refactoring and tests
-# black
-# flake8
-# pytest
-# pytest-django
+black
+flake8
+pytest
+pytest-django
 # Faker
 
 # background proccess and cache

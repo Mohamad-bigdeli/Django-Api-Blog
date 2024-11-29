@@ -8,6 +8,7 @@ from django.urls import reverse
 
 # Create your models here.
 
+
 class Post(models.Model):
     """
     this is a class to define posts for blog app
@@ -18,7 +19,9 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     content = models.TextField()
     status = models.BooleanField()
-    category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(
+        "Category", on_delete=models.SET_NULL, null=True
+    )
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -26,12 +29,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def get_snippet(self):
         return self.content[0:5]
-    
+
     def get_absolute_api_url(self):
-        return reverse("blog:api-v1:post-detail", kwargs={"pk":self.pk})
+        return reverse("blog:api-v1:post-detail", kwargs={"pk": self.pk})
+
 
 class Category(models.Model):
     name = models.CharField(max_length=250)

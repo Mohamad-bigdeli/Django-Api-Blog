@@ -7,6 +7,7 @@ User = get_user_model()
 
 # Create your models here.
 
+
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=250)
@@ -19,6 +20,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.email
+
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, created, **kwargs):
