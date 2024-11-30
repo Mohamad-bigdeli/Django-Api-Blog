@@ -23,7 +23,7 @@ black
 flake8
 pytest
 pytest-django
-# Faker
+Faker
 
 # background proccess and cache
 # celery
