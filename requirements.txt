@@ -10,7 +10,8 @@ django-filter
 drf-yasg[validation]
 djangorestframework-simplejwt
 djoser
-# django-cors-headers
+django-cors-headers
+locust
 
 # deployment module
 gunicorn
