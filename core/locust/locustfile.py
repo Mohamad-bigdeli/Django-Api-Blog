@@ -7,7 +7,7 @@ class QuickstartUser(HttpUser):
         response = self.client.post(
             url="blog/api/v2/jwt/create/",
             data={
-                "email": "mohamadbigdeli24@gmail.com",
+                "email": "admin@admin.com",
                 "password": "Mhmdbigeli031@",
             },
         ).json()
