@@ -182,3 +182,15 @@ CELERY_BROKER_URL = "redis://redis:6379/1"
 #         "schedule":5,
 #     }
 # }
+
+# caching cinfigs
+CACHES = {
+    "default" : {
+        "BACKEND" : "dajngo_redis.cache.RedisCache",
+        "LOCATION" : "redis://redis:6379/2",
+        "TIME_OUT" : 120,
+        "OPTIONS" : {
+            "CLIENT" : "dajngo_redis.client.DefaultClient",
+        }
+    }
+}
