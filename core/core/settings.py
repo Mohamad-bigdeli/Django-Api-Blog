@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     "mail_templated",
     "djoser",
     # "corsheaders",
-    "django_celery_beat",
+    # "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -186,11 +186,11 @@ CELERY_BROKER_URL = "redis://redis:6379/1"
 # caching cinfigs
 CACHES = {
     "default" : {
-        "BACKEND" : "dajngo_redis.cache.RedisCache",
+        "BACKEND" : "django_redis.cache.RedisCache",
         "LOCATION" : "redis://redis:6379/2",
         "TIME_OUT" : 120,
         "OPTIONS" : {
-            "CLIENT" : "dajngo_redis.client.DefaultClient",
+            "CLIENT" : "django_redis.client.DefaultClient",
         }
     }
 }
