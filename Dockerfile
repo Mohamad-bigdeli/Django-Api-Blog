@@ -15,5 +15,4 @@ RUN pip3 install --upgrade pip -i https://mirror-pypi.runflare.com/simple
 RUN pip3 install -r requirements.txt 
 COPY ./core /app/
 
-CMD gunicorn -b 0.0.0.0:8000 core.wsgi --timeout 60
 

@@ -25,7 +25,7 @@ services:
   
   worker:
     build: .
-    command: celery -A core worker --loglevel=info
+    command: celery -A core worker --loglevel=info 
     volumes:
       - ./core:/app
     depends_on:
