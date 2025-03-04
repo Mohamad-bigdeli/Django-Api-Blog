@@ -46,3 +46,80 @@ This project leverages a robust stack of technologies to ensure efficient develo
 - Flake8 & Black : Tools for code linting and automatic code formatting to maintain code quality.
 
 - Locust : A load testing tool to evaluate the application's performance under stress.
+
+## 🚀 Project Setup
+
+To set up the project, follow the steps below:
+
+### Prerequisites
+- **Docker**: If you don't have Docker and Docker Compose installed, follow the [Docker installation guide](https://docs.docker.com/get-docker/) and the [Docker Compose installation guide](https://docs.docker.com/compose/install/).
+
+---
+
+### Setup Steps
+
+1. **Clone the Repository**
+  
+   Clone the project repository to your local machine:
+
+   ```bash
+   git clone https://github.com/Mohamad-bigdeli/Django-Api-Blog.git
+
+2. **Navigate to the Project Folder**
+
+    Move into the project directory using the cd command:
+
+    ```bash
+    cd Django-Api-Blog
+    
+
+3. **Start Docker Compose** 
+
+    Use Docker Compose to start the project services by running the command:
+
+    ```bash
+    docker-compose up --build 
+
+4. **Create and Apply Migrations**
+
+    After the services are up, create and apply the database migrations using the following commands:
+    ```bash 
+    docker-compose exec backend sh -c "python manage.py makemigrations"
+
+    docker-compose exec backend sh -c "python manage.py migrate"
+
+5. **Create a Superuser**
+
+    Create a superuser to access the Django admin panel by running the command:
+
+    ```bash
+    docker-compose exec backend sh -c "python manage.py createsuperuser"
+
+6. **Collect Static Files**
+
+    Collect static files for the project using the command:
+
+    ```bash
+    docker-compose exec backend sh -c "python manage.py collectstatic --noinput"
+    
+7. **View the Project**
+
+    Your project is now running on port 8000. Open your browser and navigate to:
+
+   ```bash
+    http://localhost:8000.
+
+8. **Access the Admin Panel**
+
+    To access the Django admin panel, go to the following URL and log in with your superuser credentials:
+
+    ```bash
+    http://localhost:8000/admin
+
+**Additional Notes**
+
+    If you make changes to the code and need to restart the services, use the docker-compose restart command.
+    To stop the services, use the docker-compose down command.
+
+<h3>By following these steps, your project will be fully set up and ready to use. 🎉</h3>
+
