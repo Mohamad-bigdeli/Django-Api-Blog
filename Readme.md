@@ -1,5 +1,5 @@
 <h1>Introduction</h1>
-This project is a dynamic and functional blog designed to provide a suitable platform for publishing and managing content. In the account section, the Juser package is used for user management, and JWT is employed for secure authentication. This ensures the security and efficiency of the system in managing users.
+This project is a dynamic and functional blog designed to provide a suitable platform for publishing and managing content. In the account section, the djoser package is used for user management, and JWT is employed for secure authentication. This ensures the security and efficiency of the system in managing users.
 The blog section of the project allows for the publication of posts in various categories. Users can easily categorize and share their posts based on different topics. This feature helps to better organize content and facilitates easier access for users to their desired materials.
 
 <h1>Technologies</h1>
